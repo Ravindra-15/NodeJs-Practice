@@ -4,10 +4,9 @@ const db = require('./db');
 const bodyParser = require('body-parser');
 const passport = require('./auth'); 
 require('dotenv').config();
- 
 app.use(bodyParser.json());
 
-
+const PORT = process.env.PORT || 3000;
 //Middleware function
 const logRequest = (req, res, next) => {
     console.log(`[${new Date().toLocaleString()}] Request made to : ${req.originalUrl}`);
@@ -65,6 +64,6 @@ const menuItemRoutes = require('./routes/menuItemRoutes');
 app.use('/person',personRoutes);
 app.use('/menu', menuItemRoutes);
 
-app.listen(3000, () => {
+app.listen(PORT, () => {
     console.log('Server is listening on port 3000');
 });
